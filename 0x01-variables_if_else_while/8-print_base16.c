@@ -16,7 +16,7 @@ int main(void)
 	}
 
 	ch = 'a';
-	while (ch <= f)
+	while (ch <= 'f')
 	{
 		putchar(ch);
 		ch++;

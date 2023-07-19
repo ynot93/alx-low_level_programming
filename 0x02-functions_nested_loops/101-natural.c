@@ -1,4 +1,4 @@
-#include <stdlib.h>
+#include <stdio.h>
 /**
  * main - Prints the sum of multiples of 3 or 5 below a given limit
  *

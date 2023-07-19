@@ -12,16 +12,17 @@ int main(void)
 	int a = 1;
 	int b = 2;
 	int next;
+	int i;
 
 	printf("%d, %d", a, b);
 
-	for (int i = 3; i < 50; i++)
+	for (i = 3; i < 50; i++)
 	{
 		next = a + b;
 		printf(", %d", next);
 		a = b;
 		b = next;
 	}
-	printf("\n")
+	printf("\n");
 	return (0);
 }

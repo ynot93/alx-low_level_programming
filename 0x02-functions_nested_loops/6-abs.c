@@ -9,10 +9,10 @@
  *              value of it
  * Return: A positive number whether input is positive or negative
  */
-int_abs(int n)
+int _abs(int n)
 {
 	if (n > 0)
-		n *= -1
+		n *= -1;
 		return (n);
 	return (n);
 }

@@ -19,11 +19,6 @@ void print_times_table(int n)
 		return;
 	}
 
-	if (n == 0)
-	{
-		return (0);
-	}
-
 	for (row = 0; row <= n; row++)
 	{
 		for (column = 0; column <= n; column++)

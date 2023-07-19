@@ -24,19 +24,16 @@ void print_times_table(int n)
 		for (column = 0; column <= n; column++)
 		{
 			result = row * column;
-			if (column > 0)
+			if (column == 0)
 			{
-				printf(", ");
+				printf("%d, ", result);
 			}
-			if (result < 10)
+			else 
 			{
-				printf("  ");
+				printf("%3d", result);
+				if (column != n)
+					printf(", ");
 			}
-			else if (result < 100)
-			{
-				printf(" ");
-			}
-			printf("%d", result);
 		}
 		printf("\n");
 	}

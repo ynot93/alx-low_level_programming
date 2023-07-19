@@ -9,16 +9,23 @@
  *              number is zero, it returns 0 and prints '0'. If the number is
  *              less than zero, it returns -1 and prints '-'.
  *
- * Return: 1 if @c is upper or lowercase letter, 0 otherwise
+ * Return: 1 if @n is positive, -1 if negative and 0 otherwise
  */
 int print_sign(int n)
 {
 	if (n > 0)
+	{
 		_putchar('+');
 		return (1);
+	}
 	else if (n == 0)
+	{
 		_putchar('0');
 		return (0);
-	_putchar('-');
-	return (-1);
+	}
+	else
+	{
+		_putchar('-');
+		return (-1);
+	}
 }

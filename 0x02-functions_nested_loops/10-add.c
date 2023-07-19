@@ -1,17 +1,24 @@
+#include <stdlib.h>
 #include "main.h"
 
 /**
- * add - Adds two integers
- * @a: The first integer
- * @b: The second integer
+ * print_to_98 - Prints all natural numbers from n to 98
+ * @n: The starting number
  *
- * Description: This function takes two integers as arguments and
- *		adds them together.
- *              It returns the sum of the two integers.
- *
- * Return: The sum of the two integers
+ * Description: This function prints all natural numbers from n to 98.
+ *		The numbers are separated by a comma and a space, and are
+ *		printed in order.The first printed number should be the number
+ *		passed to your function and the last printed number should be 98
  */
-int add(int a, int b)
+void print_to_98(int n)
 {
-	return (a + b);
+	while (n != 98)
+	{
+		printf("%d, ", n);
+		if (n > 98)
+			n--;
+		else
+			n++;
+	}
+	printf ("98\n");
 }

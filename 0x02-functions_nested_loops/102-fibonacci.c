@@ -9,9 +9,9 @@
  */
 int main(void)
 {
-	int a = 1;
-	int b = 2;
-	int next;
+	unsigned long a = 1;
+	unsigned long b = 2;
+	unsigned long next;
 	int i;
 
 	printf("%d, %d", a, b);

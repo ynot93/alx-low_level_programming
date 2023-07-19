@@ -16,21 +16,17 @@ void times_table(void)
 		for (column = 0; column <= 9; column++)
 		{
 			result = row * column;
-			if (column > 0)
+			if (column == 0)
 			{
-				_putchar(',');
-				_putchar(' ');
-			}
-			if (column == 0 && result < 10)
-			{
-				_putchar(' ');
+				printf("%d, ", result);
 			}
 			else
 			{
-				_putchar(result / 10 + '0');
+				printf("%2d", result);
+				if (column != 9)
+					printf(", ");
 			}
-			_putchar(result % 10 + '0');
 		}
-		_putchar('\n');
+		printf('\n');
 	}
 }

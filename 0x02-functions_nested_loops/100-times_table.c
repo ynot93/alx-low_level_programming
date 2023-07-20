@@ -26,13 +26,11 @@ void print_times_table(int n)
 			result = row * column;
 			if (column == 0)
 			{
-				printf("%d, ", result);
+				printf("%d", result);
 			}
 			else
 			{
-				printf("%3d", result);
-				if (column != n)
-					printf(", ");
+				printf(", %3d", result);
 			}
 		}
 		printf("\n");

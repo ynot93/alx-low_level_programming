@@ -11,17 +11,17 @@
  */
 int main(void)
 {
-	unsigned long int a = 1;
-	unsigned long int b = 2;
-	unsigned long int next;
+	unsigned long long int a = 1;
+	unsigned long long int b = 2;
+	unsigned long long int next;
 	int i;
 
-	printf("%lu, %lu", a, b);
+	printf("%llu, %llu", a, b);
 
 	for (i = 3; i <= 98; i++)
 	{
 		next = a + b;
-		printf(", %lu", next);
+		printf(", %llu", next);
 		a = b;
 		b = next;
 	}

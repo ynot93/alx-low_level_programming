@@ -32,7 +32,7 @@ int is_prime(unsigned long num)
  */
 unsigned long largest_prime_factor(unsigned long num)
 {
-	unsigned long largest_factor = 0;
+	unsigned long largest_factor = 1;
 	unsigned long i;
 
 	for (i = 2; i * i <= num; i++)
@@ -40,7 +40,15 @@ unsigned long largest_prime_factor(unsigned long num)
 		if (num % i == 0 && is_prime(i))
 		{
 			largest_factor = i;
+			while (num % i == 0)
+			{
+				num /= i;
+			}
 		}
+	}
+	if (num > i && is_prime(num))
+	{
+		largest_factor = num;
 	}
 	return (largest_factor);
 }

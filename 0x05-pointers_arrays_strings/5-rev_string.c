@@ -15,12 +15,16 @@ void rev_string(char *s)
 	{
 		i++;
 	}
-	int start = 0;
-	int end = i - 1;
-	char j;
+	int start;
+	int end;
 
-	while start < end
+	start = 0;
+	end = i - 1;
+
+	while (start < end)
 	{
+		char j;
+
 		/* Swap characters at start and end positions */
 		j = s[start];
 		s[start] = s[end];

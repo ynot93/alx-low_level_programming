@@ -18,6 +18,9 @@ int _atoi(char *s)
 	num = 0;
 	is_digits = 0;
 
+	if (*s == '-')
+		sign *= -1;
+
 	while (*s)
 	{
 		if (*s >= '0' && *s <= '9')

@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stlib.h>
 
 /**
  * main - generates random valid passwords for the program 101-crackme
@@ -15,7 +16,7 @@ int main(void)
 
 	sum = 0;
 
-	for (i = 0; i < 100; 1++)
+	for (i = 0; i < 100; i++)
 	{
 		pass[i] = rand() % 78;
 		sum += (pass[i] + '0');

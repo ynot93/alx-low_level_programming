@@ -12,31 +12,19 @@ int _atoi(char *s)
 {
 	int sign;
 	unsigned int num;
-	int is_digits;
 
 	sign = 1;
 	num = 0;
-	is_digits = 0;
-
-	if (*s == '-')
-		sign *= -1;
-
-	while (*s)
+	
+	while (*s == '-' || *s == '+')
 	{
-		if (*s >= '0' && *s <= '9')
-		{
-			num = num * 10 + (*s - '0');
-			is_digits = 1;
-		}
-		else if (is_digits)
-		{
-			break;
-		}
+		if (*s == '-')
+			sign *= -1;
 		s++;
 	}
-
-	if (*s == ' ')
+	while (*s >= '0' && *s <= '9')
 	{
+		num = num * 10 + (*s - '0');
 		s++;
 	}
 	num *= sign;

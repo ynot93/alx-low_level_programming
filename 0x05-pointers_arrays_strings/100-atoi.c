@@ -30,9 +30,16 @@ int _atoi(char *s)
 		s++;
 	}
 
-	while (*s >= '0' && *s <= '9')
+	while (*s)
 	{
-		num = num * 10 + (*s - '0');
+		if (*s >= '0' && *s <= '9')
+		{
+			num = num * 10 + (*s - '0');
+		}
+		else
+		{
+			break;
+		}
 		s++;
 	}
 	num *= sign;

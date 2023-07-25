@@ -10,37 +10,40 @@
 
 int _atoi(char *s)
 {
-	int sign;
-	unsigned int num;
-	int overflow;
+	int d = 0;
+	int n = 0;
+	int len = 0;
+	int f = 0;
+	int digit = 0;
 
-	sign = 1;
-	num = 0;
-	while (*s == ' ')
+	while (s[i] != '\0')
 	{
-		s++;
+		++len;
 	}
-	while (*s == '-' || *s == '+')
+
+	while (i < len && f == 0)
 	{
-		if (*s == '-')
-			sign *= -1;
-		s++;
-	}
-	while (*s >= '0' && *s <= '9')
-	{
-		if (num > INT_MAX / 10 || (num == INT_MAX / 10 && (*s - '0') > INT_MAX % 10))
+		if (s[i] == '-')
+			++d;
+
+		if (s[i] >= '0' && s[i] <= '9')
 		{
-			overflow = 1;
-			break;
+			digit = s[i] - '0';
+			if (d % 2)
+				digit = -digit;
+			n = n * 10 + digit;
+			f = 1;
+
+			if (s[i + 1] < '0' || s[i + 1] > '9')
+				break;
+
+			f = 0;
 		}
-
-		num = num * 10 + (*s - '0');
-		s++;
+		i++
 	}
-	num *= sign;
 
-	if (overflow)
+	if (f == 0)
 		return (0);
 
-	return (num);
+	return (n);
 }

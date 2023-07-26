@@ -40,7 +40,7 @@ int _atoi(char *s)
 
 			f = 0;
 		}
-		i++
+		i++;
 	}
 
 	if (f == 0)

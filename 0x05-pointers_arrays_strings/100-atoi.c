@@ -10,12 +10,12 @@
 
 int _atoi(char *s)
 {
-	int d = 0;
-	int i = 0;
-	int n = 0;
-	int len = 0;
-	int f = 0;
-	int digit = 0;
+	d = 0;
+	i = 0;
+	n = 0;
+	len = 0;
+	f = 0;
+	digit = 0;
 
 	while (s[len] != '\0')
 	{

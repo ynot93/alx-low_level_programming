@@ -2,7 +2,7 @@
 
 /**
  * _print_rev_recursion - print string to stdout in reverse
- * 			  using recursion
+ *                        using recursion
  * @s: Pointer to string being printed
  *
  * Return: 0 (Success)

@@ -19,40 +19,30 @@ int _sqrt_recursion(int n)
 		return (n);
 	}
 
-	return (calc_sqrt(n, 1, n));
+	return (calc_sqrt(n, 2));
 }
 
 /**
  * calc_sqrt - Uses binary search to find squareroot.
  * @n: Number to calculate the squareroot.
- * @start: Start point of search
- * @end: End point of search
+ * @div: Divisor of n.
  *
  * Return: The value of square root of n,
- *         or -1 if no natural square root exists
+ *         or -1 if no natural square root exists.
  */
 
-int calc_sqrt(int n, int start, int end)
+int calc_sqrt(int n, int div)
 {
-	int mid = (start + end) / 2;
-	int sqr = mid * mid;
-
-	if (start > end)
+	if (div % (n / div) == 0)
 	{
-		return (-1);
+		if (div * (n / div) == n)
+		{
+			return (div);
+		}
+		else
+		{
+			return (-1);
+		}
 	}
-
-	if (sqr == n)
-	{
-		return (mid);
-	}
-
-	if (sqr > n)
-	{
-		return (calc_sqrt(n, start, end - 1));
-	}
-	else
-	{
-		return (calc_sqrt(n, mid + 1, end));
-	}
+	return (calc_sqrt(n, div + 1));
 }

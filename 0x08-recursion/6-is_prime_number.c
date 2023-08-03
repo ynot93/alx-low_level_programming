@@ -24,6 +24,11 @@ int divisible(int n, int div)
 	{
 		return (1);
 	}
+
+	if (div * div == n)
+	{
+		return (1);
+	}
 	return (divisible(n, div + 1));
 }
 

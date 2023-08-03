@@ -12,6 +12,8 @@ int calc_sqrt(int n, int div);
 int is_prime_number(int n);
 int divisible(int n, int div);
 int is_palindrome(char *s);
+int is_palindrome_helper(char *s, int start, int end);
 int wildcmp(char *s1, char *s2);
+int len_str(char *s);
 
 #endif

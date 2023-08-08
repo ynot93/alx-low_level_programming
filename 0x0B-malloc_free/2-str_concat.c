@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 /**
- * _str_concat - Concatenates a string onto another.
+ * str_concat - Concatenates a string onto another.
  * @s1: String to be concatenated to.
  * @s2: Srtring to concatenate to s1.
  *

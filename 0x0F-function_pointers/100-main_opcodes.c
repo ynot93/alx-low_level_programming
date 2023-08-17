@@ -12,6 +12,7 @@ int main(int argc, char *argv[])
 {
 	int number_of_bytes;
 	int i;
+	char *ptr;
 
 	if (argc != 2)
 	{
@@ -26,10 +27,13 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		return (2);
 	}
+	ptr = (char *)main;
 
 	for (i = 0; i < number_of_bytes; i++)
 	{
-		printf("%02x")
+		printf("%02x", *(ptr + i));
+		if (i < number_of_bytes - 1)
+			printf(" ");
 	}
 	printf("\n");
 

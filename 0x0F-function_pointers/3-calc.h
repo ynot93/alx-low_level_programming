@@ -7,14 +7,14 @@
 /**
  * struct op - Struct op.
  *
- * @op - The calculation operator.
- * @f - The pointer function associated.
+ * @op: The calculation operator.
+ * @f: The pointer function associated.
  */
 typedef struct op
 {
 	char *op;
 	int (*f)(int a, int b);
-}op_t;
+} op_t;
 
 /* Function Prototypes */
 int op_add(int a, int b);

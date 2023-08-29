@@ -1,7 +1,7 @@
 #include "lists.h"
-/*
- * free_listint - Free memory for listint_t list.
- * @head: Pointer to list to be freed of memory.
+/**
+ * free_listint - Frees a linked list.
+ * @head: Pointer to a head pointer of the linked list.
  *
  * Return: Nothing.
  */

@@ -1,7 +1,7 @@
 #include "main.h"
 /**
  * binary_to_uint - Converts a number in binary form to unsigned int.
- * b: Pointer to a string of 0 and 1 chars.
+ * @b: Pointer to a string of 0 and 1 chars.
  *
  * Return: 0 if b is NULL, or,
  *         One or more chars in string b is not 0 or 1,
@@ -9,8 +9,8 @@
  */
 unsigned int binary_to_uint(const char *b)
 {
-	unsigned int res, len;
-	int power;
+	unsigned int res;
+	int power, len;
 
 	res = 0;
 	power = 1;

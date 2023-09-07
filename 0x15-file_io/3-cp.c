@@ -28,12 +28,10 @@ int main(int argc, char *argv[])
 
 	if (argc != 3)
 		error_handle(97, "Usage: cp file_from file_to\n", NULL);
-
 	fdes_from = open(argv[1], O_RDONLY);
 
 	if (fdes_from == -1)
 		error_handle(98, "Error: Can't read from file %s\n", argv[1]);
-
 	fdes_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 
 	if (fdes_to == -1)
@@ -47,30 +45,21 @@ int main(int argc, char *argv[])
 		written_bytes = write(fdes_to, buffer, read_bytes);
 		if (written_bytes == -1)
 		{
-			close(fdes_from);
-			close(fdes_to);
+			close(fdes_from), close(fdes_to);
 			error_handle(99, "Error: Can't write to file %s\n", argv[2]);
 		}
 	}
 
 	if (read_bytes == -1)
 	{
-		close(fdes_from);
-		close(fdes_to);
+		close(fdes_from), close(fdes_to);
 		error_handle(98, "Error: Can't read from file %s\n", argv[1]);
 	}
 
-	if (close(fdes_from) == -1)
+	if (close(fdes_from) == -1 || close(fdes_to) == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fdes_from);
-		exit(100);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n",
+				(close(fdes_from) == -1) ? fdes_from : fdes_to), exit(100);
 	}
-
-	if (close(fdes_to) == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fdes_to);
-		exit(100);
-	}
-
 	return (0);
 }

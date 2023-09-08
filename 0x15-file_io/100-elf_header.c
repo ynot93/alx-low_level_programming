@@ -7,7 +7,9 @@
  */
 void print_elf(const Elf64_Ehdr *header)
 {
-	printf("Elf Header\n");
+	int i;
+
+	printf("Elf Header:\n");
 	printf("  Magic:   ");
 
 	for (i = 0; i < EI_NIDENT; i++)
@@ -19,9 +21,9 @@ void print_elf(const Elf64_Ehdr *header)
 	printf("  Data:                              %s\n",
 			(header->e_ident[EI_DATA] == ELFDATA2LSB)
 			? "2's complement, little endian" : "2's complement, big endian");
-	printf("  Version:                           %d (current)",
+	printf("  Version:                           %d (current)\n",
 			header->e_ident[EI_VERSION]);
-	printf("OS/ABI:                            ");
+	printf("  OS/ABI:                            ");
 
 	switch (header->e_ident[EI_OSABI])
 	{
@@ -42,10 +44,10 @@ void print_elf(const Elf64_Ehdr *header)
 	printf("  Type:                              ");
 	switch(header->e_type)
 	{
-		case ET_NONE: printf("(NONE) No file type\n"); break;
+		case ET_NONE: printf("NONE (No file type)\n"); break;
 		case ET_REL: printf("REL (Relocateable file)\n"); break;
 		case ET_EXEC: printf("EXEC (Executable file)\n"); break;
-		case ET_DYN: printf("DYN Shared object file\n"); break;
+		case ET_DYN: printf("DYN (Shared object file)\n"); break;
 		case ET_CORE: printf("CORE (Core file)\n"); break;
 		default: printf("<unknown>\n");
 	}
@@ -77,14 +79,14 @@ int main(int argc, char **argv)
 	if (read_bytes != sizeof(header))
 	{
 		perror("Error");
-		clode(fd);
+		close(fd);
 		return (98);
 	}
 
-	if (header.e_ident[EI_MAGO] != ELFMAGO ||
+	if (header.e_ident[EI_MAG0] != ELFMAG0 ||
 			header.e_ident[EI_MAG1] != ELFMAG1 ||
 			header.e_ident[EI_MAG2] != ELFMAG2 ||
-			header.e_ident[EI_MAG3 != ELFMAG3])
+			header.e_ident[EI_MAG3] != ELFMAG3)
 	{
 		fprintf(stderr, "Error: Not an ELF file\n");
 		close(fd);

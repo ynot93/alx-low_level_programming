@@ -25,6 +25,7 @@ int main(int argc, char *argv[])
 	int fdes_from, fdes_to;
 	char buffer[BUFFER_SIZE];
 	ssize_t read_bytes, written_bytes;
+	mode_t old_umask;
 
 	if (argc != 3)
 		error_handle(97, "Usage: cp file_from file_to\n", NULL);
@@ -32,13 +33,12 @@ int main(int argc, char *argv[])
 
 	if (fdes_from == -1)
 		error_handle(98, "Error: Can't read from file %s\n", argv[1]);
-	fdes_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	old_umask = umask(0);
+	fdes_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
+	umask(old_umask);
 
 	if (fdes_to == -1)
-	{
-		close(fdes_from);
-		error_handle(99, "Error: Can't write to %s\n", argv[2]);
-	}
+		close(fdes_from), error_handle(99, "Error: Can't write to %s\n", argv[2]);
 
 	while ((read_bytes = read(fdes_from, buffer, sizeof(buffer))) > 0)
 	{
@@ -46,15 +46,13 @@ int main(int argc, char *argv[])
 		if (written_bytes == -1)
 		{
 			close(fdes_from), close(fdes_to);
-			error_handle(99, "Error: Can't write to file %s\n", argv[2]);
+			error_handle(99, "Error: Can't write to %s\n", argv[2]);
 		}
 	}
 
 	if (read_bytes == -1)
-	{
-		close(fdes_from), close(fdes_to);
-		error_handle(98, "Error: Can't read from file %s\n", argv[1]);
-	}
+		close(fdes_from), close(fdes_to),
+			error_handle(98, "Error: Can't read from file %s\n", argv[1]);
 
 	if (close(fdes_from) == -1 || close(fdes_to) == -1)
 	{

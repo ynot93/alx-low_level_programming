@@ -19,5 +19,7 @@ int create_file(const char *filename, char *text_content);
 int append_text_to_file(const char *filename, char *text_content);
 void error_handle(int exit_code, const char *format, const char *arg);
 void print_elf(const Elf64_Ehdr *header);
+void check_elf(unsigned char *e_ident);
+void read_elf_header(int fd, Elf64_Ehdr *header);
 
 #endif

@@ -176,7 +176,7 @@ int main(int argc, char **argv)
 	fd = open(elf_filename, O_RDONLY);
 	if (fd == -1)
 	{
-		perror("Error");
+		fprintf(stderr, "Error: Could not open file: %s", elf_filename);
 		return (98);
 	}
 	read_elf_header(fd, &header);

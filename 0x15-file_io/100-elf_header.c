@@ -169,15 +169,15 @@ int main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		fprintf(stderr, "Usage: %s elf_filename\n", argv[0]);
-		return (98);
+		dprintf(STDERR_FILENO, "Usage: %s elf_filename\n", argv[0]);
+		exit(98);
 	}
 	elf_filename = argv[1];
 	fd = open(elf_filename, O_RDONLY);
 	if (fd == -1)
 	{
-		fprintf(stderr, "Error: Could not open file: %s", elf_filename);
-		return (98);
+		dprintf(STDERR_FILENO, "Error: Could not open file: %s\n", elf_filename);
+		exit(98);
 	}
 	read_elf_header(fd, &header);
 	check_elf(header.e_ident);
@@ -189,6 +189,11 @@ int main(int argc, char **argv)
 	print_abi(header.e_ident[EI_ABIVERSION]);
 	print_elf_type(header.e_type);
 	print_entry(header.e_entry, header.e_ident[EI_CLASS]);
-	close(fd);
+	
+	if (close(fd) == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Cant close fd %d\n", fd);
+		exit(98);
+	}
 	return (0);
 }

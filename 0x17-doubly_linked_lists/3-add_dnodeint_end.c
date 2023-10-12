@@ -11,10 +11,11 @@
 dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
 {
 	dlistint_t *new_node = malloc(sizeof(dlistint_t));
+
 	if (new_node == NULL)
 	{
 		perror("Malloc failed!");
-		return NULL;
+		return (NULL);
 	}
 
 	new_node->n = n;
@@ -28,6 +29,7 @@ dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
 	else
 	{
 		dlistint_t *current = *head;
+
 		while (current->next != NULL)
 		{
 			current = current->next;

@@ -2,21 +2,18 @@ CC = gcc
 SRC = $(wildcard *.c)
 OBJ = $(SRC:.c=.o)
 NAME = school
-RM = rm -f
-CFLAGS = -Wall -Wextra -Werror -pedantic
 
 .PHONY: all clean oclean fclean re
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $^ -o $@
+	$(CC) -Wall -Werror -Wextra -pedantic $^ -o $@
 
 all: $(NAME)
 
 clean:
 	$(RM) $(OBJ) *~ $(NAME)
 
-oclean:
-	$(RM) $(OBJ)
+oclean: clean
 
 fclean: clean
 	$(RM) $(NAME)
